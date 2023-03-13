@@ -37,14 +37,14 @@ class LeastSquares:
     def __init__(self, x: Sequence[float | int], y: Sequence[float | int], functions: Sequence[&#39;sp.Symbol&#39;]) -&gt; None:
         r&#34;&#34;&#34;
         Args:
-            x (Sequence[float | int]): _The x values_
-            y (Sequence[float | int]): _The true y values_
-            functions (Sequence[&#39;sp.Symbol&#39;]): _The functions to be used in the least squares method_
+            x (Sequence[float or int]): _The x values_
+            y (Sequence[float or int]): _The true y values_
+            functions (Sequence[sp.Symbol]): _The functions to be used in the least squares method_
 
         Attributes:
             x (np.ndarray): _The x values_
             f_vector (np.ndarray): _The true y values_
-            g_functions (Sequence[&#39;sp.Symbol&#39;]): _The functions to be used in the least squares method_
+            g_functions (Sequence[sp.Symbol]): _The functions to be used in the least squares method_
             g_vectors (list[np.ndarray]): _A list of each g function evaluated in each x value_
             phi (sp.Symbol): _The least squares fitted function_
             coefficients (dict): _The coefficients of the g functions_
@@ -58,11 +58,11 @@ class LeastSquares:
         self.get_g_vectors()
 
     def get_g_vectors(self) -&gt; None:
-        r&#34;&#34;&#34;_Constructs an array containing \(n\) vectors \(g_i(x_k)\) of the form:
+        r&#34;&#34;&#34;_Constructs an array containing \(n\) vectors \(g_i(x_k)\) of the form_:
                     $$[[g_1(x_0), g_1(x_1),...,g_1(x_m)],\\
                     [g_2(x_0), g_2(x_1),...,g_2(x_m)],\\
                     [g_n(x_0), g_n(x_1),...,g_n(x_m)]]$$
-            for \(n\) functions \(g\) and \(m\) points \(x\) passed to the constructor.
+            _for \(n\) functions \(g\) and \(m\) points \(x\) passed to the constructor_.
 
         &#34;&#34;&#34;
         x = sp.Symbol(&#39;x&#39;)
@@ -77,7 +77,7 @@ class LeastSquares:
         self.g_vectors = np.array(g_vectors)               # type: ignore
 
     def solve(self) -&gt; None:
-        r&#34;&#34;&#34;Returns \(\phi (x)\) and its coefficients by solving the system of linear equations:
+        r&#34;&#34;&#34;Calculates \(\phi (x)\) and its coefficients by solving the system of linear equations:
             $$\left\{
                 \begin{matrix}
                     \alpha_1 (\vec{g_1} \cdot \vec{g_1}) &amp; + &amp; \alpha_2 (\vec{g_1} \cdot \vec{g_2})
@@ -132,7 +132,7 @@ class LeastSquares:
         r&#34;&#34;&#34;_Returns a list of predicted values for the given points_
 
         Args:
-            *args (Sequence[float | int]): _The points to predict_
+            args (Sequence[float | int]): _The points to predict_
 
         Returns:
             list[float]: _The predicted values_
@@ -145,8 +145,8 @@ class LeastSquares:
         r&#34;&#34;&#34;_Plots the given points_
 
         Args:
-            X (Sequence[float | int]): _The x values_
-            y (Sequence[float | int]): _The y values_
+            X (Sequence[float or int]): _The x values_
+            y (Sequence[float or int]): _The y values_
         &#34;&#34;&#34;
         plt.scatter(X, y, marker=&#39;x&#39;, color=&#39;r&#39;, s=25)                               # type: ignore
         plt.title(&#39;Least Squares Fit&#39;, weight=&#39;bold&#39;, y=1.05)                        # type: ignore
@@ -169,16 +169,22 @@ class LeastSquares:
 </code></dt>
 <dd>
 <div class="desc"><h2 id="args">Args</h2>
-<p>x (Sequence[float | int]): <em>The x values</em>
-y (Sequence[float | int]): <em>The true y values</em>
-functions (Sequence['sp.Symbol']): <em>The functions to be used in the least squares method</em></p>
+<dl>
+<dt><strong><code>x</code></strong> :&ensp;<code>Sequence[float</code> or <code>int]</code></dt>
+<dd><em>The x values</em></dd>
+<dt><strong><code>y</code></strong> :&ensp;<code>Sequence[float</code> or <code>int]</code></dt>
+<dd><em>The true y values</em></dd>
+<dt><strong><code>functions</code></strong> :&ensp;<code>Sequence[sp.Symbol]</code></dt>
+<dd><em>The functions to be used in the least squares method</em></dd>
+</dl>
 <h2 id="attributes">Attributes</h2>
 <dl>
 <dt><strong><code>x</code></strong> :&ensp;<code>np.ndarray</code></dt>
 <dd><em>The x values</em></dd>
 <dt><strong><code>f_vector</code></strong> :&ensp;<code>np.ndarray</code></dt>
 <dd><em>The true y values</em></dd>
-<dt>g_functions (Sequence['sp.Symbol']): <em>The functions to be used in the least squares method</em></dt>
+<dt><strong><code>g_functions</code></strong> :&ensp;<code>Sequence[sp.Symbol]</code></dt>
+<dd><em>The functions to be used in the least squares method</em></dd>
 <dt><strong><code>g_vectors</code></strong> :&ensp;<code>list[np.ndarray]</code></dt>
 <dd><em>A list of each g function evaluated in each x value</em></dd>
 <dt><strong><code>phi</code></strong> :&ensp;<code>sp.Symbol</code></dt>
@@ -198,14 +204,14 @@ functions (Sequence['sp.Symbol']): <em>The functions to be used in the least squ
     def __init__(self, x: Sequence[float | int], y: Sequence[float | int], functions: Sequence[&#39;sp.Symbol&#39;]) -&gt; None:
         r&#34;&#34;&#34;
         Args:
-            x (Sequence[float | int]): _The x values_
-            y (Sequence[float | int]): _The true y values_
-            functions (Sequence[&#39;sp.Symbol&#39;]): _The functions to be used in the least squares method_
+            x (Sequence[float or int]): _The x values_
+            y (Sequence[float or int]): _The true y values_
+            functions (Sequence[sp.Symbol]): _The functions to be used in the least squares method_
 
         Attributes:
             x (np.ndarray): _The x values_
             f_vector (np.ndarray): _The true y values_
-            g_functions (Sequence[&#39;sp.Symbol&#39;]): _The functions to be used in the least squares method_
+            g_functions (Sequence[sp.Symbol]): _The functions to be used in the least squares method_
             g_vectors (list[np.ndarray]): _A list of each g function evaluated in each x value_
             phi (sp.Symbol): _The least squares fitted function_
             coefficients (dict): _The coefficients of the g functions_
@@ -219,11 +225,11 @@ functions (Sequence['sp.Symbol']): <em>The functions to be used in the least squ
         self.get_g_vectors()
 
     def get_g_vectors(self) -&gt; None:
-        r&#34;&#34;&#34;_Constructs an array containing \(n\) vectors \(g_i(x_k)\) of the form:
+        r&#34;&#34;&#34;_Constructs an array containing \(n\) vectors \(g_i(x_k)\) of the form_:
                     $$[[g_1(x_0), g_1(x_1),...,g_1(x_m)],\\
                     [g_2(x_0), g_2(x_1),...,g_2(x_m)],\\
                     [g_n(x_0), g_n(x_1),...,g_n(x_m)]]$$
-            for \(n\) functions \(g\) and \(m\) points \(x\) passed to the constructor.
+            _for \(n\) functions \(g\) and \(m\) points \(x\) passed to the constructor_.
 
         &#34;&#34;&#34;
         x = sp.Symbol(&#39;x&#39;)
@@ -238,7 +244,7 @@ functions (Sequence['sp.Symbol']): <em>The functions to be used in the least squ
         self.g_vectors = np.array(g_vectors)               # type: ignore
 
     def solve(self) -&gt; None:
-        r&#34;&#34;&#34;Returns \(\phi (x)\) and its coefficients by solving the system of linear equations:
+        r&#34;&#34;&#34;Calculates \(\phi (x)\) and its coefficients by solving the system of linear equations:
             $$\left\{
                 \begin{matrix}
                     \alpha_1 (\vec{g_1} \cdot \vec{g_1}) &amp; + &amp; \alpha_2 (\vec{g_1} \cdot \vec{g_2})
@@ -293,7 +299,7 @@ functions (Sequence['sp.Symbol']): <em>The functions to be used in the least squ
         r&#34;&#34;&#34;_Returns a list of predicted values for the given points_
 
         Args:
-            *args (Sequence[float | int]): _The points to predict_
+            args (Sequence[float | int]): _The points to predict_
 
         Returns:
             list[float]: _The predicted values_
@@ -306,8 +312,8 @@ functions (Sequence['sp.Symbol']): <em>The functions to be used in the least squ
         r&#34;&#34;&#34;_Plots the given points_
 
         Args:
-            X (Sequence[float | int]): _The x values_
-            y (Sequence[float | int]): _The y values_
+            X (Sequence[float or int]): _The x values_
+            y (Sequence[float or int]): _The y values_
         &#34;&#34;&#34;
         plt.scatter(X, y, marker=&#39;x&#39;, color=&#39;r&#39;, s=25)                               # type: ignore
         plt.title(&#39;Least Squares Fit&#39;, weight=&#39;bold&#39;, y=1.05)                        # type: ignore
@@ -322,8 +328,12 @@ functions (Sequence['sp.Symbol']): <em>The functions to be used in the least squ
 <dd>
 <div class="desc"><p><em>Plots the given points</em></p>
 <h2 id="args">Args</h2>
-<p>X (Sequence[float | int]): <em>The x values</em>
-y (Sequence[float | int]): <em>The y values</em></p></div>
+<dl>
+<dt><strong><code>X</code></strong> :&ensp;<code>Sequence[float</code> or <code>int]</code></dt>
+<dd><em>The x values</em></dd>
+<dt><strong><code>y</code></strong> :&ensp;<code>Sequence[float</code> or <code>int]</code></dt>
+<dd><em>The y values</em></dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -333,8 +343,8 @@ def plot(X: Sequence[int | float], y: Sequence[int | float]) -&gt; None:
     r&#34;&#34;&#34;_Plots the given points_
 
     Args:
-        X (Sequence[float | int]): _The x values_
-        y (Sequence[float | int]): _The y values_
+        X (Sequence[float or int]): _The x values_
+        y (Sequence[float or int]): _The y values_
     &#34;&#34;&#34;
     plt.scatter(X, y, marker=&#39;x&#39;, color=&#39;r&#39;, s=25)                               # type: ignore
     plt.title(&#39;Least Squares Fit&#39;, weight=&#39;bold&#39;, y=1.05)                        # type: ignore
@@ -374,23 +384,23 @@ def plot(X: Sequence[int | float], y: Sequence[int | float]) -&gt; None:
 <span>def <span class="ident">get_g_vectors</span></span>(<span>self) ‑> None</span>
 </code></dt>
 <dd>
-<div class="desc"><p>_Constructs an array containing <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vectors <span><span class="MathJax_Preview">g_i(x_k)</span><script type="math/tex">g_i(x_k)</script></span> of the form:
+<div class="desc"><p><em>Constructs an array containing <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> vectors <span><span class="MathJax_Preview">g_i(x_k)</span><script type="math/tex">g_i(x_k)</script></span> of the form</em>:
 <span><span class="MathJax_Preview">[[g_1(x_0), g_1(x_1),...,g_1(x_m)],\\
 [g_2(x_0), g_2(x_1),...,g_2(x_m)],\\
 [g_n(x_0), g_n(x_1),...,g_n(x_m)]]</span><script type="math/tex; mode=display">[[g_1(x_0), g_1(x_1),...,g_1(x_m)],\\
 [g_2(x_0), g_2(x_1),...,g_2(x_m)],\\
 [g_n(x_0), g_n(x_1),...,g_n(x_m)]]</script></span>
-for <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> functions <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> points <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> passed to the constructor.</p></div>
+<em>for <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> functions <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> and <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> points <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> passed to the constructor</em>.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def get_g_vectors(self) -&gt; None:
-    r&#34;&#34;&#34;_Constructs an array containing \(n\) vectors \(g_i(x_k)\) of the form:
+    r&#34;&#34;&#34;_Constructs an array containing \(n\) vectors \(g_i(x_k)\) of the form_:
                 $$[[g_1(x_0), g_1(x_1),...,g_1(x_m)],\\
                 [g_2(x_0), g_2(x_1),...,g_2(x_m)],\\
                 [g_n(x_0), g_n(x_1),...,g_n(x_m)]]$$
-        for \(n\) functions \(g\) and \(m\) points \(x\) passed to the constructor.
+        _for \(n\) functions \(g\) and \(m\) points \(x\) passed to the constructor_.
 
     &#34;&#34;&#34;
     x = sp.Symbol(&#39;x&#39;)
@@ -411,7 +421,7 @@ for <span><span class="MathJax_Preview">n</span><script type="math/tex">n</scrip
 <dd>
 <div class="desc"><p><em>Returns a list of predicted values for the given points</em></p>
 <h2 id="args">Args</h2>
-<p>*args (Sequence[float | int]): <em>The points to predict</em></p>
+<p>args (Sequence[float | int]): <em>The points to predict</em></p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>list[float]</code></dt>
@@ -425,7 +435,7 @@ for <span><span class="MathJax_Preview">n</span><script type="math/tex">n</scrip
     r&#34;&#34;&#34;_Returns a list of predicted values for the given points_
 
     Args:
-        *args (Sequence[float | int]): _The points to predict_
+        args (Sequence[float | int]): _The points to predict_
 
     Returns:
         list[float]: _The predicted values_
@@ -438,7 +448,7 @@ for <span><span class="MathJax_Preview">n</span><script type="math/tex">n</scrip
 <span>def <span class="ident">solve</span></span>(<span>self) ‑> None</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Returns <span><span class="MathJax_Preview">\phi (x)</span><script type="math/tex">\phi (x)</script></span> and its coefficients by solving the system of linear equations:
+<div class="desc"><p>Calculates <span><span class="MathJax_Preview">\phi (x)</span><script type="math/tex">\phi (x)</script></span> and its coefficients by solving the system of linear equations:
 <span><span class="MathJax_Preview">\left\{
 \begin{matrix}
 \alpha_1 (\vec{g_1} \cdot \vec{g_1}) &amp; + &amp; \alpha_2 (\vec{g_1} \cdot \vec{g_2})
@@ -465,7 +475,7 @@ for <span><span class="MathJax_Preview">n</span><script type="math/tex">n</scrip
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def solve(self) -&gt; None:
-    r&#34;&#34;&#34;Returns \(\phi (x)\) and its coefficients by solving the system of linear equations:
+    r&#34;&#34;&#34;Calculates \(\phi (x)\) and its coefficients by solving the system of linear equations:
         $$\left\{
             \begin{matrix}
                 \alpha_1 (\vec{g_1} \cdot \vec{g_1}) &amp; + &amp; \alpha_2 (\vec{g_1} \cdot \vec{g_2})
