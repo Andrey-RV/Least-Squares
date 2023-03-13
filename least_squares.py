@@ -8,14 +8,14 @@ class LeastSquares:
     def __init__(self, x: Sequence[float | int], y: Sequence[float | int], functions: Sequence['sp.Symbol']) -> None:
         r"""
         Args:
-            x (Sequence[float | int]): _The x values_
-            y (Sequence[float | int]): _The true y values_
-            functions (Sequence['sp.Symbol']): _The functions to be used in the least squares method_
+            x (Sequence[float or int]): _The x values_
+            y (Sequence[float or int]): _The true y values_
+            functions (Sequence[sp.Symbol]): _The functions to be used in the least squares method_
 
         Attributes:
             x (np.ndarray): _The x values_
             f_vector (np.ndarray): _The true y values_
-            g_functions (Sequence['sp.Symbol']): _The functions to be used in the least squares method_
+            g_functions (Sequence[sp.Symbol]): _The functions to be used in the least squares method_
             g_vectors (list[np.ndarray]): _A list of each g function evaluated in each x value_
             phi (sp.Symbol): _The least squares fitted function_
             coefficients (dict): _The coefficients of the g functions_
@@ -29,11 +29,11 @@ class LeastSquares:
         self.get_g_vectors()
 
     def get_g_vectors(self) -> None:
-        r"""_Constructs an array containing \(n\) vectors \(g_i(x_k)\) of the form:
+        r"""_Constructs an array containing \(n\) vectors \(g_i(x_k)\) of the form_:
                     $$[[g_1(x_0), g_1(x_1),...,g_1(x_m)],\\
                     [g_2(x_0), g_2(x_1),...,g_2(x_m)],\\
                     [g_n(x_0), g_n(x_1),...,g_n(x_m)]]$$
-            for \(n\) functions \(g\) and \(m\) points \(x\) passed to the constructor.
+            _for \(n\) functions \(g\) and \(m\) points \(x\) passed to the constructor_.
 
         """
         x = sp.Symbol('x')
@@ -48,7 +48,7 @@ class LeastSquares:
         self.g_vectors = np.array(g_vectors)               # type: ignore
 
     def solve(self) -> None:
-        r"""Returns \(\phi (x)\) and its coefficients by solving the system of linear equations:
+        r"""Calculates \(\phi (x)\) and its coefficients by solving the system of linear equations:
             $$\left\{
                 \begin{matrix}
                     \alpha_1 (\vec{g_1} \cdot \vec{g_1}) & + & \alpha_2 (\vec{g_1} \cdot \vec{g_2})
@@ -103,7 +103,7 @@ class LeastSquares:
         r"""_Returns a list of predicted values for the given points_
 
         Args:
-            *args (Sequence[float | int]): _The points to predict_
+            args (Sequence[float | int]): _The points to predict_
 
         Returns:
             list[float]: _The predicted values_
@@ -116,8 +116,8 @@ class LeastSquares:
         r"""_Plots the given points_
 
         Args:
-            X (Sequence[float | int]): _The x values_
-            y (Sequence[float | int]): _The y values_
+            X (Sequence[float or int]): _The x values_
+            y (Sequence[float or int]): _The y values_
         """
         plt.scatter(X, y, marker='x', color='r', s=25)                               # type: ignore
         plt.title('Least Squares Fit', weight='bold', y=1.05)                        # type: ignore
