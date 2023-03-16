@@ -9,7 +9,7 @@ $\displaystyle \sum_{i=1}^n\left(y_i-\varphi(x_i)\right)g_j(x_i)=0$
 
 for all $j=1,2,\cdots,n$, which results in solving the following system of linear equations:
 
-$\left\{
+$$\left(
 \begin{matrix}
 \alpha_1 (\vec{g_1} \cdot \vec{g_1}) & + & \alpha_2 (\vec{g_1} \cdot \vec{g_2})
 & + & \alpha_3 (\vec{g_1} \cdot \vec{g_3}) & = & \vec{f} \cdot \vec{g_1}\\
@@ -19,7 +19,7 @@ $\left\{
 \alpha_1 (\vec{g_n} \cdot \vec{g_1}) & + & (\alpha_2 \vec{g_n} \cdot \vec{g_2})
 & + & \alpha_3 (\vec{g_n} \cdot \vec{g_3}) & = & \vec{f} \cdot \vec{g_n}\\
 \end{matrix}
-\right.$
+\right.$$
 
 Where $\vec{f}$ is the vector of $y_i$ values, and every $\vec{g_j}$ vector are the $x_i$ values evaluated in the $g_j(x)$ functions.
 
@@ -70,7 +70,7 @@ ls.mean_square_error
 
 ls.plot()
 ```
-![plot of the fitted function](https://imgur.com/1xqtmwa)
+![plot of the fitted function](https://i.ibb.co/hLSsDx9/baixados.png)
 
 ## Documentation
 Further documentation about the implementation and other attributes of a LeastSquares instance can be found [here](https://andrey-rv.github.io/LeastSquares/)
