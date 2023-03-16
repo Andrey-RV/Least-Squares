@@ -109,17 +109,14 @@ class LeastSquares:
             list[float]: _The predicted values_
         """
         x = sp.Symbol('x')
-        return [self.phi.subs(x, i) for i in args[0]]                                 # type: ignore
+        return [self.phi.subs(x, i) for i in args[0]]                                  # type: ignore
 
-    @staticmethod
-    def plot(X: Sequence[int | float], y: Sequence[int | float]) -> None:
-        r"""_Plots the given points_
-
-        Args:
-            X (Sequence[float or int]): _The x values_
-            y (Sequence[float or int]): _The y values_
-        """
-        plt.scatter(X, y, marker='x', color='r', s=25)                               # type: ignore
-        plt.title('Least Squares Fit', weight='bold', y=1.05)                        # type: ignore
-        plt.xlabel('x')                                                              # type: ignore
-        plt.show()                                                                   # type: ignore
+    def plot(self) -> None:
+        r"""_Plots the fitted function_"""
+        x_sample = np.linspace(self.x[0], self.x[-1], 1000)                                 # type: ignore
+        y_predict = self.predict(x_sample)                                                  # type: ignore
+        plt.scatter(self.x, self.f_vector, marker='x', color='black', label='Actual data')  # type: ignore
+        plt.plot(x_sample, y_predict, color='r', label='Fitted model')                      # type: ignore
+        plt.title('Least Squares Fit', weight='bold', y=1.05)                               # type: ignore
+        plt.legend()                                                                        # type: ignore
+        plt.show()                                                                          # type: ignore
