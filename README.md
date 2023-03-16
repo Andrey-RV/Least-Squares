@@ -55,9 +55,9 @@ From the instance, call the solve() method to find the $\alpha_i$ that minimize 
 
 After calling solve(), you may now can call other methods such as
 
- - plot: plots the fitted function $\varphi(x)$ and the data points $(x_i, y_i)$.
- - evaluate_error: makes the attributes mean_square_error() and relative_error() available.
- - predict: returns the value of $\varphi(x)$ for a given sequence of value of $x$.
+-   plot: plots the fitted function $\varphi(x)$ and the data points $(x_i, y_i)$.
+-   evaluate_error: makes the attributes mean_square_error() and relative_error() available.
+-   predict: returns the value of $\varphi(x)$ for a given sequence of value of $x$.
 
 ```python
 ls.solve()
