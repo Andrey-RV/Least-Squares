@@ -40,15 +40,15 @@ class LeastSquares:
 
     def solve(self) -> None:
         r"""Calculate $\phi (x)$ and its coefficients by solving the system of linear equations:
-            $$\left\{
+            $$\left\(
                 \begin{matrix}
                     \alpha_1 (\vec{g_1} \cdot \vec{g_1}) & + & \alpha_2 (\vec{g_1} \cdot \vec{g_2})
-                    & + & \alpha_3 (\vec{g_1} \cdot \vec{g_3}) & = & \vec{f} \cdot \vec{g_1}\\
+                    & + & \alpha_3 (\vec{g_1} \cdot \vec{g_3}) & = & \vec{f} \cdot \vec{g_1} \\\\
                     \alpha_1 (\vec{g_2} \cdot \vec{g_1}) & + & \alpha_2 (\vec{g_2} \cdot \vec{g_2})
-                    & + & \alpha_3 (\vec{g_2} \cdot \vec{g_3}) & = & \vec{f} \cdot \vec{g_2}\\
-                    \vdots & + & \vdots & + & \vdots & = & \vdots\\
+                    & + & \alpha_3 (\vec{g_2} \cdot \vec{g_3}) & = & \vec{f} \cdot \vec{g_2} \\\\
+                    \vdots & + & \vdots & + & \vdots & = & \vdots \\\\
                     \alpha_1 (\vec{g_n} \cdot \vec{g_1}) & + & (\alpha_2 \vec{g_n} \cdot \vec{g_2})
-                    & + & \alpha_3 (\vec{g_n} \cdot \vec{g_3}) & = & \vec{f} \cdot \vec{g_n}\\
+                    & + & \alpha_3 (\vec{g_n} \cdot \vec{g_3}) & = & \vec{f} \cdot \vec{g_n} \\\\
                 \end{matrix}
             \right.$$
         """
