@@ -3,38 +3,29 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
 
+numeric_sequence = Sequence[int | float]
+symbolic_sequence = Sequence[sp.Symbol]
+
 
 class LeastSquares:
-    def __init__(self, x: Sequence[float | int], y: Sequence[float | int], functions: Sequence['sp.Symbol']) -> None:
+    def __init__(self, x: numeric_sequence, y: numeric_sequence, functions: symbolic_sequence) -> None:
         r"""
         Args:
-            x (Sequence[float or int]): _The x values_
-            y (Sequence[float or int]): _The true y values_
-            functions (Sequence[sp.Symbol]): _The functions to be used in the least squares method_
-
-        Attributes:
-            x (np.ndarray): _The x values_
-            f_vector (np.ndarray): _The true y values_
-            g_functions (Sequence[sp.Symbol]): _The functions to be used in the least squares method_
-            g_vectors (list[np.ndarray]): _A list of each g function evaluated in each x value_
-            phi (sp.Symbol): _The least squares fitted function_
-            coefficients (dict): _The coefficients of the g functions_
-            mean_square_error (float): _The mean square error of the fitted function_
-            relative_errors (np.ndarray): _The relative error of each point_
-
+            x (Sequence[int | float]): The x values.
+            y (Sequence[int | float]): The true y values.
+            functions (Sequence[sp.Symbol]): The functions to be used in the least squares method.
         """
         self.x = np.array(x)
         self.g_functions = functions
         self.f_vector = np.array(y)
-        self.get_g_vectors()
+        self._get_g_vectors()
 
-    def get_g_vectors(self) -> None:
-        r"""_Constructs an array containing \(n\) vectors \(g_i(x_k)\) of the form_:
+    def _get_g_vectors(self) -> None:
+        r"""Construct an array containing \(n\) vectors \(g_i(x_k)\) of the form:
                     $$[[g_1(x_0), g_1(x_1),...,g_1(x_m)],\\
                     [g_2(x_0), g_2(x_1),...,g_2(x_m)],\\
                     [g_n(x_0), g_n(x_1),...,g_n(x_m)]]$$
-            _for \(n\) functions \(g\) and \(m\) points \(x\) passed to the constructor_.
-
+            for $n$ functions $g$ and $m$ points $x$ passed to the constructor.
         """
         x = sp.Symbol('x')
         g_vectors = []
@@ -48,7 +39,7 @@ class LeastSquares:
         self.g_vectors = np.array(g_vectors)               # type: ignore
 
     def solve(self) -> None:
-        r"""Calculates \(\phi (x)\) and its coefficients by solving the system of linear equations:
+        r"""Calculate $\phi (x)$ and its coefficients by solving the system of linear equations:
             $$\left\{
                 \begin{matrix}
                     \alpha_1 (\vec{g_1} \cdot \vec{g_1}) & + & \alpha_2 (\vec{g_1} \cdot \vec{g_2})
@@ -59,7 +50,7 @@ class LeastSquares:
                     \alpha_1 (\vec{g_n} \cdot \vec{g_1}) & + & (\alpha_2 \vec{g_n} \cdot \vec{g_2})
                     & + & \alpha_3 (\vec{g_n} \cdot \vec{g_3}) & = & \vec{f} \cdot \vec{g_n}\\
                 \end{matrix}
-            \right.$$_
+            \right.$$
         """
         number_of_functions = len(self.g_functions)
         coeffs_matrix = []
@@ -85,7 +76,7 @@ class LeastSquares:
         self.phi = np.sum(g_functions_with_coeff)                                     # type: ignore
 
     def evaluate_error(self) -> None:
-        r"""_Calculates the mean square error and the relative error of the fitted function_"""
+        """Calculate the mean square error and the relative error of the fitted function."""
         x = sp.Symbol('x')
         Y = self.f_vector
         predicted_y = [self.phi.subs(x, i) for i in self.x]                           # type: ignore
@@ -99,20 +90,20 @@ class LeastSquares:
         self.mean_square_error = np.sqrt(mean_squared_error)
         self.relative_error = absolute_error / Y
 
-    def predict(self, *args: Sequence[int | float]) -> list[float]:
-        r"""_Returns a list of predicted values for the given points_
+    def predict(self, *args: numeric_sequence) -> list[float]:
+        """Return a list of predicted values for the given points.
 
         Args:
-            args (Sequence[float | int]): _The points to predict_
+            args (Sequence[int | float]): The points to predict.
 
         Returns:
-            list[float]: _The predicted values_
+            list[float]: The predicted values.
         """
         x = sp.Symbol('x')
         return [self.phi.subs(x, i) for i in args[0]]                                  # type: ignore
 
     def plot(self) -> None:
-        r"""_Plots the fitted function_"""
+        """Plot the fitted function."""
         x_sample = np.linspace(self.x[0], self.x[-1], 1000)                                 # type: ignore
         y_predict = self.predict(x_sample)                                                  # type: ignore
         plt.scatter(self.x, self.f_vector, marker='x', color='black', label='Actual data')  # type: ignore
