@@ -81,4 +81,4 @@ ls.plot()
 ![plot of the fitted function](https://i.ibb.co/hLSsDx9/baixados.png)
 
 ## Documentation
-Further documentation about the implementation and other attributes of a LeastSquares instance can be found [here](https://andrey-rv.github.io/LeastSquares/)
+Further documentation about the implementation can be found [here](https://andrey-rv.github.io/LeastSquares/)
