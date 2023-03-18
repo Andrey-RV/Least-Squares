@@ -24,10 +24,10 @@ $$\left(
 Where $\vec{f}$ is the vector of $y_i$ values, and every $\vec{g_j}$ vector are the $x_i$ values evaluated in the $g_j(x)$ functions.
 
 ## Requirements
- -   Python 3.10 or above to avoid any errors related to Type Hints from PEP 585 and PEP 604;
- -   Sympy;
- -   Numpy;
- -   Matplotlib;
+-   Python 3.10 or above to avoid any errors related to Type Hints from PEP 585 and PEP 604;
+-   Sympy;
+-   Numpy;
+-   Matplotlib;
 
 You can run the following command to install all the requirements:
 
