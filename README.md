@@ -29,8 +29,13 @@ Where $\vec{f}$ is the vector of $y_i$ values, and every $\vec{g_j}$ vector are 
  -   Numpy;
  -   Matplotlib;
 
+You can run the following command to install all the requirements:
 
-## How to use
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
 To start, download or clone the repository, and navigate to the project directory. Create a new  .py file, and import the LeastSquares class from the least_squares module.
 
 ```python
