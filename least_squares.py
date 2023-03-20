@@ -76,19 +76,19 @@ class LeastSquares:
         self.phi = np.sum(g_functions_with_coeff)                                     # type: ignore
 
     def evaluate_error(self) -> None:
-        """Calculate the mean square error and the relative error of the fitted function."""
+        """Calculate the absolute, mean square and relative errors of the fitted function."""
         x = sp.Symbol('x')
         Y = self.f_vector
         predicted_y = [self.phi.subs(x, i) for i in self.x]                           # type: ignore
         predicted_y = np.array(predicted_y).astype(float)                             # type: ignore
 
         error = predicted_y - Y
-        absolute_error = np.abs(error)
+        self.absolute_error = np.abs(error)
         squared_error = (predicted_y - Y) ** 2
         mean_squared_error = np.sum(squared_error) / len(self.x)                      # type: ignore
 
         self.mean_square_error = np.sqrt(mean_squared_error)
-        self.relative_error = absolute_error / Y
+        self.relative_error = self.absolute_error / Y
 
     def predict(self, *args: numeric_sequence) -> list[float]:
         """Return a list of predicted values for the given points.
